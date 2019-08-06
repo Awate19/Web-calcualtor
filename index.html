@@ -3,11 +3,12 @@
     <head>
         <title>Calcualtor</title>
         <link rel="stylesheet" href="style.css">
+      <script src="app.js"></script>  
     </head>
-    <body >
+    <body onload="abc()">
     <table border="1" cellspacing="0px" cellpadding="0px">
         <tr id="textbox">
-            <td colspan="4"><input type="text" id="text1"></td>
+            <td colspan="4"><input type="text" id="text1" value=""></td>
         </tr>
         <tr>
             <td><button>%</button></td>
@@ -22,29 +23,65 @@
             <td><button>/</button></td>
         </tr>
         <tr>
-            <td><button>7</button></td>
-            <td><button>8</button></td>
-            <td><button>9</button></td>
-            <td><button>x</button></td>
+            <td><button id="x7">7</button></td>
+            <td><button id="x8">8</button></td>
+            <td><button id="x9">9</button></td>
+            <td><button id="">x</button></td>
         </tr>
         <tr>
-            <td><button>4</button></td>
-            <td><button>5</button></td>
-            <td><button>6</button></td>
+            <td><button id="x4">4</button></td>
+            <td><button id="x5">5</button></td>
+            <td><button id="x6">6</button></td>
             <td><button>-</button></td>
         </tr>
         <tr>
-            <td><button>1</button></td>
-            <td><button>2</button></td>
-            <td><button>3</button></td>
+            <td><button id="x1">1</button></td>
+            <td><button id="x2">2</button></td>
+            <td><button id="x3">3</button></td>
             <td><button>+</button></td>
         </tr>
         <tr>
             <td><button>+/-</button></td>
-            <td><button>0</button></td>
+            <td><button id="x0">0</button></td>
             <td><button>.</button></td>
             <td><button>=</button></td>
         </tr>
     </table>
+    <script >
+            function loading1()
+    {
+    operandsId=["zero","one","two","three","four","five","six","seven","eight","nine"];
+    
+    for(i=0;i<operandsId.length;i++)
+    {
+       var number=""
+       var test=displayNumber(operandsId[i]);
+        document.getElementById(operandsId[i]).addEventListener("click",test);
+        number=number+i;
+        document.getElementById(operandsId[i]).value=number;
+    }
+    console.log("u have added the event listener")
+    }
+    function displayNumber(x)
+    {
+       return function()
+       {
+        var display=document.getElementById('text1');
+        if(display.value=="")
+        {
+          var number=document.getElementById(x).value;
+            display.value=number
+        }
+        else
+        {
+            var dispalyvalue=display.value;
+            var number=document.getElementById(x).value;
+            display.value=dispalyvalue+number
+        }
+    
+    };
+    }
+    
+            </script>
     </body>
 </html>
